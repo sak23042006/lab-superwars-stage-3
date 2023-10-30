@@ -1,15 +1,15 @@
 const PLAYERS = [
     "Spiderman",
     "Captain America",
-    "Wonderwoman",
+    "Wonder woman",
     "Popcorn",
-    "Gemwoman",
+    "Gem woman",
     "Bolt",
-    "Antwoman",
+    "Ant woman",
     "Mask",
     "Tiger",
     "Captain",
-    "Catwoman",
+    "Cat woman",
     "Fish",
     "Hulk",
     "Ninja",
@@ -23,28 +23,48 @@ const PLAYERS = [
 
 // initialize players with image and strength
 const initPlayers = (players) => {
-    let detailedPlayers = '';
 
     // Instead of forloop use Map method
     // Code here
+
+    let detailedPlayers = players.map((player,index) => {
+
+        return{
+            Name : player,
+            strength : getRandomStrength(),
+            Image : "images/super-"+ (index+1) +".png",
+            type: index%2 ==0 ? "hero" : "villain"
+        }
+        
+    });  
 
     return detailedPlayers;
 }
 
 // getting random strength
 const getRandomStrength = () => {
-    return Math.ceil(Math.random() * 100);
+    return Math.floor(Math.random() * 100);
 }
 
 // Build player template
 const buildPlayers = (players, type) => {
-    let fragment = '';
 
     // Instead of using for loop
     // Use chaining of Array methods - filter, map and join
     // Type your code here
 
-    return fragment;
+    var filteredPlayers = players.filter((player) => player.type==type)
+    var fragment = filteredPlayers.map((player) =>{
+
+        return `<div class="player">
+        <img src="${player.Image}" alt="${player.name}">
+        <h2>${player.Name}</h2>
+        <p class="strength">${player.strength}</p>
+        </div>`;
+
+    })
+
+    return fragment.join('');
 }
 
 // Display players in HTML
