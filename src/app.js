@@ -24,7 +24,7 @@ const PLAYERS = [
 // initialize players with image and strength
 const initPlayers = (players) => {
 
-    // Instead of forloop use Map method
+    // Instead of for loop use Map method
     // Code here
 
     let detailedPlayers = players.map((player,index) => {
